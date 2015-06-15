@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alias</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="restart">Restart</string>
+    <string name="skip">Skip</string>
+    <string name="ok">Ok</string>
+    <string name="start">Start</string>
+    <string name="score">Score</string>
+
+    <string name="complexity">Complexity</string>
+    <string name="light">Light</string>
+    <string name="key_light">light</string>
+    <string name= "middle">Middle</string>
+    <string name="key_middle">middle</string>
+    <string name="key_hard">hard</string>
+    <string name="hard">Hard</string>
+    <string name="super_hard">Super Hard</string>
+    <string name="key_super_hard">superHard</string>
+
+    <string name="duration">Duration</string>
+    <string name="key_duration">duration</string>
+    <string name="duration_title">Set duration</string>
+    <string-array name="duration_text">
+        <item>30 seconds</item>
+        <item>45 seconds</item>
+        <item>60 seconds</item>
+    </string-array>
+    <string-array name="duration_value">
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+    </string-array>
+
+    <string name="global_setting">Global setting</string>
+    <string name="next_round">Next round</string>
+    <string name="show_score">Show score</string>
+    <string name="teams_numbers">Teams numbers</string>
+    <string-array name="teams">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string name="team1">First team</string>
+    <string name="team2">Second team</string>
+    <string name="team3">Thurd team</string>
+    <string name="team4">Fourth team</string>
+
+    <string name="for_team1">first team</string>
+    <string name="for_team2">second team</string>
+    <string name="for_team3">thurd team</string>
+    <string name="for_team4">fourth team</string>
+
+    <string name="info">Next round for </string>
+
+    <string name="perform_score">%1$s, score: %2$s, steps: %3$s</string>
+    <string name="who">Who guess word %s ?</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Alias</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Настройки</string>
+    <string name="restart">Перезапустить</string>
+    <string name="skip">Пропустить</string>
+    <string name="complexity">Сложность</string>
+    <string name="start">Старт</string>
+    <string name="score">Счет</string>
+
+
+    <string name="light">Легко</string>
+    <string name="middle">Нормально</string>
+    <string name="hard">Сложно</string>
+    <string name="super_hard">Очень сложно</string>
+
+    <string name="duration">Продолжительность</string>
+    <string name="duration_title">Задать продолжительность</string>
+
+    <string-array name="duration_text">
+        <item>30 секунд</item>
+        <item>45 секунд</item>
+        <item>60 секунд</item>
+    </string-array>
+
+    <string name="global_setting">Глобальные настройки</string>
+    <string name="next_round">Следующий раунд</string>
+    <string name="show_score">Показать счет</string>
+    <string name="teams_numbers">Число команд</string>
+
+    <string name="team1">Первая команда</string>
+    <string name="team2">Вторая команда</string>
+    <string name="team3">Третья команда</string>
+    <string name="team4">Четвертая команда</string>
+
+    <string name="for_team1">первой команды</string>
+    <string name="for_team2">второй команды</string>
+    <string name="for_team3">третьей команды</string>
+    <string name="for_team4">четвертой команды</string>
+
+    <string name="info">Следующий раунд для </string>
+    <string name="perform_score">%1$s, счёт: %2$s, ходов: %3$s</string>
+    <string name="who">Кто угадал слово %s ?</string>
+
+</resources>

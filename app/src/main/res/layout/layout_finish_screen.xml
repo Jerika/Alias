@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/finish_layout"
+    android:background="@drawable/wooden114">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/linearLayout2" >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/next_round"
+            android:id="@+id/next_round"
+            android:layout_weight="1"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:onClick="onNextRoundClick" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/show_score"
+            android:id="@+id/show_score"
+            android:layout_weight="1"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:onClick="onShowScoreClick" />
+
+    </LinearLayout>
+</LinearLayout>

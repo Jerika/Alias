@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wooden114"
+    android:weightSum="1"
+    android:gravity="bottom">
+
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        >
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_group_team"
+            android:gravity="left"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/team1"
+                android:id="@+id/first_team"
+                android:textAppearance="@android:style/TextAppearance.Large" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/team2"
+                android:id="@+id/second_team"
+                android:textAppearance="@android:style/TextAppearance.Large" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/team3"
+                android:id="@+id/thurd_team"
+                android:textAppearance="@android:style/TextAppearance.Large" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/team4"
+                android:id="@+id/fouth_team"
+                android:textAppearance="@android:style/TextAppearance.Large" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/info"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:layout_below="@+id/radio_group_team"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="43dp"
+            android:layout_alignParentBottom="false"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/linearLayout">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/show_score"
+            android:id="@+id/score"
+            android:layout_weight="1"
+            android:onClick="onShowScoreClick"
+            android:nestedScrollingEnabled="false"
+            android:textAppearance="@android:style/TextAppearance.Large" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/start"
+            android:id="@+id/button"
+            android:onClick="onStartClick"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:singleLine="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>

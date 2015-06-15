@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="D:\Projects\Project\Alias\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-9a796f1d3014224d7568ccba26365be7bce822fc.jar" />
+    </item>
+    <item
+        jar="D:\Projects\Project\Alias\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="D:\Projects\Project\Alias\app\build\intermediates\pre-dexed\debug\classes-b3e1708bbcb43095d534a5066ff69fadc4fc8ac4.jar" />
+    </item>
+    <item
+        jar="C:\Users\a.kovelskaya\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\6.1.0\63735f48b82bcd24cdd33821342428252eb1ca5a\butterknife-6.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
+        <dex dex="D:\Projects\Project\Alias\app\build\intermediates\pre-dexed\debug\butterknife-6.1.0-e60b0b644329aeb230b32d64fb3b86a46542df32.jar" />
+    </item>
+    <item
+        jar="C:\Users\a.kovelskaya\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="D:\Projects\Project\Alias\app\build\intermediates\pre-dexed\debug\gson-2.3-590dfb8c31acaa640c40e3682660bc0d09fa5baa.jar" />
+    </item>
+    <item
+        jar="D:\Projects\Project\Alias\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="D:\Projects\Project\Alias\app\build\intermediates\pre-dexed\debug\classes-a185669262209525f4e80b956458a75657ae5f07.jar" />
+    </item>
+    <item
+        jar="D:\Projects\Project\Alias\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="D:\Projects\Project\Alias\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-01c57521cc71a87ce743db742ad4c1486c4a5350.jar" />
+    </item>
+    <item
+        jar="D:\Projects\Project\Alias\app\build\intermediates\exploded-aar\Alias\complexPreference\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6e6a3d025e84cb9cecfa0e1a714d5b4653374fa0">
+        <dex dex="D:\Projects\Project\Alias\app\build\intermediates\pre-dexed\debug\classes-7483c82444d8f9bb135fca8592e9dca95b2516f5.jar" />
+    </item>
+
+</items>

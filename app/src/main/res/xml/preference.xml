@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/global_setting">
+
+        <ListPreference
+            android:key="duration"
+            android:title="@string/duration_title"
+            android:entries="@array/duration_text"
+            android:entryValues="@array/duration_value"
+            android:defaultValue="60"
+            android:dialogTitle="@string/duration" />
+
+        <ListPreference
+            android:key="teams"
+            android:title="@string/teams_numbers"
+            android:entries="@array/teams"
+            android:entryValues="@array/teams"
+            android:defaultValue="2"
+            android:dialogTitle="@string/teams_numbers" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/complexity"
+        android:key="complexity">
+        <CheckBoxPreference
+            android:key="@string/key_light"
+            android:title="@string/light">
+        </CheckBoxPreference>
+
+        <CheckBoxPreference
+            android:key="@string/key_middle"
+            android:title="@string/middle">
+        </CheckBoxPreference>
+
+        <CheckBoxPreference
+            android:key="@string/key_hard"
+            android:title="@string/hard">
+        </CheckBoxPreference>
+
+        <CheckBoxPreference
+            android:key="@string/key_super_hard"
+            android:title="@string/super_hard">
+        </CheckBoxPreference>
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

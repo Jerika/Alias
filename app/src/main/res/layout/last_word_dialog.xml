@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Какая команда угадала слово %s "
+        android:id="@+id/lastWord" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/team1"
+            android:id="@+id/first_team"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/team3"
+            android:id="@+id/thurd_team"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/second_team"
+            android:layout_toEndOf="@+id/second_team" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/team2"
+            android:id="@+id/second_team"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_below="@+id/first_team"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/team4"
+            android:id="@+id/fouth_team"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_below="@+id/first_team"
+            android:layout_toRightOf="@+id/second_team"
+            android:layout_toEndOf="@+id/second_team" />
+
+    </GridLayout>
+
+</LinearLayout>

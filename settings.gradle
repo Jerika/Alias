@@ -1,0 +1,2 @@
+include ':app', ':complexPreference'
+project(':complexPreference').projectDir = new File('complexPreferences')
