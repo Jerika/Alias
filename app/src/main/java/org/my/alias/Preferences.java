@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import java.util.ArrayList;
+
 import br.com.kots.mob.complex.preferences.ComplexPreferences;
 
 public class Preferences {
@@ -96,4 +98,35 @@ public class Preferences {
         }
         return team;
     }
+
+    public String getComplexity(){
+        ArrayList<Integer> complexity = new ArrayList<>();
+        boolean light = sharedPreferences.getBoolean("light", false);
+        if (light){
+            complexity.add(1);
+        }
+        boolean middle = sharedPreferences.getBoolean("middle", false);
+        if (middle){
+            complexity.add(2);
+        }
+        boolean hard = sharedPreferences.getBoolean("hard", false);
+        if (hard){
+            complexity.add(3);
+        }
+        boolean superHard = sharedPreferences.getBoolean("superHard", false);
+        if (superHard){
+            complexity.add(4);
+        }
+        String compl = null;
+        for (int i = 0; i < complexity.size(); i++){
+            if (i == 0){
+                compl = String.valueOf(complexity.get(0));
+            }else{
+                compl = compl + ", " +  complexity.get(i);
+            }
+
+        }
+        return compl;
+    }
+
 }

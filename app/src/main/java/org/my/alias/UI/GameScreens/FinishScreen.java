@@ -106,5 +106,9 @@ public void onNextRoundClick(View view) {
         return checkedScore;
     }
 
+    @Override
+    public void onBackPressed() {
 
+        super.onBackPressed();
+    }
 }

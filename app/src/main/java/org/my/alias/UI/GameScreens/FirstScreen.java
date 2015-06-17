@@ -27,6 +27,7 @@ public class FirstScreen extends AppCompatActivity {
     }
 
     public void onStartClick(View view) {
+        preferences.edit().putString("compl", Preferences.getInstance(this).getComplexity()).apply();
         preferences.edit().putInt(Preferences.KEY_ACTIVE_TEAM, 1).apply();
         startActivity(new Intent(this, StartScreen.class));
     }

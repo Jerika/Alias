@@ -32,7 +32,8 @@
 
         <CheckBoxPreference
             android:key="@string/key_middle"
-            android:title="@string/middle">
+            android:title="@string/middle"
+            android:checked="true">
         </CheckBoxPreference>
 
         <CheckBoxPreference

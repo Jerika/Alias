@@ -42,6 +42,8 @@
 
     <string name="info">Следующий раунд для </string>
     <string name="perform_score">%1$s, счёт: %2$s, ходов: %3$s</string>
-    <string name="who">Кто угадал слово %s ?</string>
+    <string name="who_guessed">Кто угадал слово %s ?</string>
+    <string name="who">Кто?</string>
+    <string name="choose_complexity">Пожалуйста,выберите сложность</string>
 
 </resources>

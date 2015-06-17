@@ -24,7 +24,6 @@
             android:text="@string/next_round"
             android:id="@+id/next_round"
             android:layout_weight="1"
-            android:textAppearance="@android:style/TextAppearance.Large"
             android:onClick="onNextRoundClick" />
 
         <Button
@@ -33,7 +32,6 @@
             android:text="@string/show_score"
             android:id="@+id/show_score"
             android:layout_weight="1"
-            android:textAppearance="@android:style/TextAppearance.Large"
             android:onClick="onShowScoreClick" />
 
     </LinearLayout>

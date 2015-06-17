@@ -72,7 +72,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View v = inflater.inflate(R.layout.last_word_dialog, null);
         ButterKnife.inject(this, v);
-        text.setText(getString(R.string.who, word));
+        text.setText(getString(R.string.who_guessed, word));
         RadioFirst.setOnClickListener(this);
         RadioSecond.setOnClickListener(this);
         RadioThird.setOnClickListener(this);
@@ -87,7 +87,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
                 break;
         }
 
-        AlertDialog lastWord = new AlertDialog.Builder(getActivity()).setView(v).setTitle("Score")
+        AlertDialog lastWord = new AlertDialog.Builder(getActivity()).setView(v).setTitle(R.string.who)
                 .setInverseBackgroundForced(true)
                 .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
@@ -103,6 +103,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
                         intent.putExtra(Preferences.KEY_SCORE, score);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+                        getActivity().finish();
                         dismiss();
                     }
                 }).create();

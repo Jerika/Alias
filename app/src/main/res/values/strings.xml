@@ -57,5 +57,7 @@
     <string name="info">Next round for </string>
 
     <string name="perform_score">%1$s, score: %2$s, steps: %3$s</string>
-    <string name="who">Who guess word %s ?</string>
+    <string name="who_guessed">Who guess word %s ?</string>
+    <string name="who">Who?</string>
+    <string name="choose_complexity">Please, choose comlexity</string>
 </resources>

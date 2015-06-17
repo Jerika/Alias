@@ -114,8 +114,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String getWords(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(myContext);
+        String compl = prefs.getString("compl", "2");
         String word = null;
-        Cursor cursor = myDataBase.rawQuery("SELECT word FROM words ORDER BY RANDOM() LIMIT 1", null);
+        Cursor cursor = myDataBase.rawQuery("SELECT word FROM words WHERE complexity IN (" + compl + ") ORDER BY RANDOM() LIMIT 1", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             word = cursor.getString(cursor.getColumnIndex("word"));
@@ -123,8 +124,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return word;
     }
-
-
 }
 
 

@@ -13,10 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.my.alias.AutoResizeTextView;
 import org.my.alias.DatabaseHelper;
 import org.my.alias.Pair;
 import org.my.alias.Preferences;
 import org.my.alias.R;
+
 import org.my.alias.UI.LastWordDialog;
 
 import java.io.IOException;
@@ -29,7 +31,8 @@ import butterknife.InjectView;
 public class MainScreen extends AppCompatActivity implements View.OnClickListener {
     @InjectView (R.id.ok)Button ok;
     @InjectView (R.id.skip)Button skip;
-    @InjectView (R.id.word)TextView word;
+    @InjectView (R.id.word)AutoResizeTextView word;
+
     int score;
     @InjectView (R.id.timer)TextView timer;
     DatabaseHelper helper;
@@ -47,10 +50,12 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
         ButterKnife.inject(this);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         duration = Integer.parseInt(sharedPreferences.getString("duration", "60"));
+
         ok.setOnClickListener(this);
         skip.setOnClickListener(this);
         Typeface type = Typeface.createFromAsset(getAssets(),"a_stamper.ttf");
         word.setTypeface(type);
+
         timer.setTypeface(type);
         score = 0;
         helper = new DatabaseHelper(this);
@@ -61,6 +66,7 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
         }
         helper.openDataBase();
         word.setText(helper.getWords());
+
     }
 
     @Override
@@ -112,6 +118,7 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
                 Pair guessed = new Pair(word.getText().toString(), true);
                 playWords.add(guessed);
                 score++;
+                word.setTextSize(50);
                 word.setText(helper.getWords());
                 break;
             case R.id.skip:
@@ -139,6 +146,7 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
             public void onFinish() {
                 finish = true;
                 LastWordDialog lastWordDialog = new LastWordDialog(word.getText(), playWords, score);
+                lastWordDialog.setCancelable(false);
                 lastWordDialog.show(getFragmentManager(), "lastWord");
                 /*Intent intent = new Intent(getApplicationContext(), FinishScreen.class);
                 intent.putExtra(KEY_PAIR, playWords);
