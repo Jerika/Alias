@@ -3,6 +3,7 @@ package org.my.alias.UI.GameScreens;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
@@ -13,12 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.my.alias.UI.CustomView.AutoResizeTextView;
 import org.my.alias.DatabaseHelper;
 import org.my.alias.Pair;
 import org.my.alias.Preferences;
 import org.my.alias.R;
-
+import org.my.alias.UI.CustomView.AutoResizeTextView;
 import org.my.alias.UI.CustomView.CircleProgressBar;
 import org.my.alias.UI.LastWordDialog;
 
@@ -100,7 +100,8 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
         duration = savedInstanceState.getInt(Preferences.KEY_TIMER);
         playWords = (ArrayList<Pair>) savedInstanceState.getSerializable(Preferences.KEY_PAIR);
         score = savedInstanceState.getInt(Preferences.KEY_SCORE);
-        CircleBar.setProgress((float) ((float) savedInstanceState.getInt("sec", duration)*full));
+        CircleBar.setProgress((float) (duration*full));
+        finish = savedInstanceState.getBoolean(Preferences.KEY_FINISH);
         super.onRestoreInstanceState(savedInstanceState);
     }
 
@@ -109,10 +110,10 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
         if(!finish){
             outState.putInt(Preferences.KEY_TIMER, Integer.parseInt(String.valueOf(timer.getText())));
         }
+        outState.putBoolean(Preferences.KEY_FINISH, finish);
         outState.putString(Preferences.KEY_WORD, String.valueOf(word.getText()));
         outState.putSerializable(Preferences.KEY_PAIR, playWords);
         outState.putInt(Preferences.KEY_SCORE, score);
-        outState.putInt("sec",Integer.parseInt((String)timer.getText()));
         countDownTimer.cancel();
         super.onSaveInstanceState(outState);
     }
@@ -153,16 +154,14 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
                 CircleBar.setProgressWithAnimation(progressBar);
             }
             public void onFinish() {
+                if (!finish){
+                    MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.stop); // создаём новый объект mediaPlayer
+                    mediaPlayer.start();
+                }
                 finish = true;
                 LastWordDialog lastWordDialog = new LastWordDialog(word.getText(), playWords, score);
                 lastWordDialog.setCancelable(false);
                 lastWordDialog.show(getFragmentManager(), "lastWord");
-                /*Intent intent = new Intent(getApplicationContext(), FinishScreen.class);
-                intent.putExtra(KEY_PAIR, playWords);
-                intent.putExtra(KEY_SCORE, score);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);*/
-                //finish();
             }
         }
                 .start();

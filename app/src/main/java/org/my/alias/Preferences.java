@@ -23,6 +23,7 @@ public class Preferences {
     public static final String KEY_SCORE = "score";
     public static final String KEY_WORD = "word";
     public static final String KEY_TIMER = "timer";
+    public static final String KEY_FINISH = "finish";
 
 
     private Preferences(Context context) {
