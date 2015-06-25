@@ -65,8 +65,8 @@ public class ScoreDialog extends DialogFragment {
                 textFirst.setText(getString(R.string.perform_score, getString(R.string.team1), firstTeam.getScore(), firstTeam.getSteps()));
                 secondTeam = complexPreferences.getObject(Preferences.KEY_SECOND, Team.class);
                 textSecond.setText(getString(R.string.perform_score, getString(R.string.team2), secondTeam.getScore(), secondTeam.getSteps()));
-                textThird.setVisibility(View.INVISIBLE);
-                textFourth.setVisibility(View.INVISIBLE);
+                textThird.setVisibility(View.GONE);
+                textFourth.setVisibility(View.GONE);
                 break;
             case 3:
                 firstTeam = complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);
@@ -75,7 +75,7 @@ public class ScoreDialog extends DialogFragment {
                 textSecond.setText(getString(R.string.perform_score, getString(R.string.team2), secondTeam.getScore(), secondTeam.getSteps()));
                 thirdTeam = complexPreferences.getObject(Preferences.KEY_THIRD, Team.class);
                 textThird.setText(getString(R.string.perform_score, getString(R.string.team3),thirdTeam.getScore(),thirdTeam.getSteps()));
-                textFourth.setVisibility(View.INVISIBLE);
+                textFourth.setVisibility(View.GONE);
                 break;
             case 4:
                 firstTeam = complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);

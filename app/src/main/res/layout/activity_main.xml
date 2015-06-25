@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
@@ -8,23 +9,22 @@
     android:weightSum="1">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:gravity="center_vertical">
+        android:layout_weight="0.4">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Осталось: "
-            android:id="@+id/text_timer"
-            android:layout_marginBottom="0dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="right" />
+        <org.my.alias.UI.CustomView.CircleProgressBar
+            android:id="@+id/custom_progressBar"
+            android:layout_width="@dimen/progressBar_dimen"
+            android:layout_height="@dimen/progressBar_dimen"
+            app:progress="35"
+            app:progressBarThickness="10dp"
+
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +32,16 @@
             android:textSize="60sp"
             android:text="Large Text"
             android:id="@+id/timer"
-            android:layout_gravity="right" />
+            android:layout_gravity="right"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -41,10 +50,9 @@
             android:weightSum="1"
             android:baselineAligned="false"
             android:gravity="right"
-            android:layout_gravity="top"
             android:id="@+id/for_test">
 
-            <org.my.alias.AutoResizeTextView
+            <org.my.alias.UI.CustomView.AutoResizeTextView
                 android:text="@string/hello_world"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,9 +62,10 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_gravity="center"
                 android:maxLines="1"
-                android:gravity="center_vertical|center_horizontal" />
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
         </LinearLayout>
 
     </LinearLayout>

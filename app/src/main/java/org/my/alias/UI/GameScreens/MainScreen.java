@@ -13,12 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.my.alias.AutoResizeTextView;
+import org.my.alias.UI.CustomView.AutoResizeTextView;
 import org.my.alias.DatabaseHelper;
 import org.my.alias.Pair;
 import org.my.alias.Preferences;
 import org.my.alias.R;
 
+import org.my.alias.UI.CustomView.CircleProgressBar;
 import org.my.alias.UI.LastWordDialog;
 
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
     @InjectView (R.id.ok)Button ok;
     @InjectView (R.id.skip)Button skip;
     @InjectView (R.id.word)AutoResizeTextView word;
+    @InjectView(R.id.custom_progressBar) CircleProgressBar CircleBar;
 
     int score;
     @InjectView (R.id.timer)TextView timer;
@@ -39,6 +41,7 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
     CountDownTimer countDownTimer;
     int duration;
     boolean finish = false;
+    double full;
 
     ArrayList<Pair> playWords = new ArrayList<>();
 
@@ -50,7 +53,8 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
         ButterKnife.inject(this);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         duration = Integer.parseInt(sharedPreferences.getString("duration", "60"));
-
+        CircleBar.setProgress(100);
+        full = 100/(double)duration;
         ok.setOnClickListener(this);
         skip.setOnClickListener(this);
         Typeface type = Typeface.createFromAsset(getAssets(),"a_stamper.ttf");
@@ -96,6 +100,7 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
         duration = savedInstanceState.getInt(Preferences.KEY_TIMER);
         playWords = (ArrayList<Pair>) savedInstanceState.getSerializable(Preferences.KEY_PAIR);
         score = savedInstanceState.getInt(Preferences.KEY_SCORE);
+        CircleBar.setProgress((float) ((float) savedInstanceState.getInt("sec", duration)*full));
         super.onRestoreInstanceState(savedInstanceState);
     }
 
@@ -107,6 +112,7 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
         outState.putString(Preferences.KEY_WORD, String.valueOf(word.getText()));
         outState.putSerializable(Preferences.KEY_PAIR, playWords);
         outState.putInt(Preferences.KEY_SCORE, score);
+        outState.putInt("sec",Integer.parseInt((String)timer.getText()));
         countDownTimer.cancel();
         super.onSaveInstanceState(outState);
     }
@@ -141,7 +147,10 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
         countDownTimer = new CountDownTimer(duration* 1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                timer.setText(String.valueOf(millisUntilFinished / 1000));
+                long sec = millisUntilFinished / 1000;
+                timer.setText(String.valueOf(sec));
+                float progressBar = (float) (full*sec);
+                CircleBar.setProgressWithAnimation(progressBar);
             }
             public void onFinish() {
                 finish = true;

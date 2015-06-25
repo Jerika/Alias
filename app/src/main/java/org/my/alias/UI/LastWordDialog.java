@@ -31,6 +31,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
     @InjectView (R.id.second_team)RadioButton RadioSecond;
     @InjectView (R.id.thurd_team)RadioButton RadioThird;
     @InjectView (R.id.fouth_team)RadioButton RadioFourth;
+    @InjectView (R.id.none) RadioButton RadioNone;
     @InjectView (R.id.lastWord) TextView text;
 
     ArrayList<Pair> playWords;
@@ -77,6 +78,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
         RadioSecond.setOnClickListener(this);
         RadioThird.setOnClickListener(this);
         RadioFourth.setOnClickListener(this);
+        RadioNone.setOnClickListener(this);
         switch (Integer.parseInt(sharedPreferences.getString(Preferences.KEY_QANTITY_TEAMS_FROM_PREFS, "2"))){
             case 2:
                 RadioThird.setVisibility(View.INVISIBLE);
@@ -93,10 +95,12 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Team team = getCheckedTeam();
-                        if (team.getNumber() == sharedPreferences.getInt(Preferences.KEY_ACTIVE_TEAM, 1)) {
-                            playWords.add(new Pair((String) word, true));
-                        } else {
-                            Preferences.getInstance(getActivity()).saveTeam(team, team.getNumber(), true, true, 0, 0 );
+                        if (team != null){
+                            if (team.getNumber() == sharedPreferences.getInt(Preferences.KEY_ACTIVE_TEAM, 1)) {
+                                playWords.add(new Pair((String) word, true));
+                            } else {
+                                Preferences.getInstance(getActivity()).saveTeam(team, team.getNumber(), true, true, 0, 0 );
+                            }
                         }
                         Intent intent = new Intent(getActivity(), FinishScreen.class);
                         intent.putExtra(Preferences.KEY_PAIR, playWords);
@@ -120,6 +124,8 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
                 return complexPreferences.getObject(Preferences.KEY_THIRD, Team.class);
             case R.id.fouth_team:
                 return complexPreferences.getObject(Preferences.KEY_FOURTH, Team.class);
+            case R.id.none:
+                return null;
             default:
                 return complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);
         }
@@ -134,6 +140,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
                 RadioSecond.setChecked(false);
                 RadioThird.setChecked(false);
                 RadioFourth.setChecked(false);
+                RadioNone.setChecked(false);
                 break;
             case R.id.second_team:
                 checkedRadio = R.id.second_team;
@@ -141,6 +148,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
                 RadioSecond.setChecked(true);
                 RadioThird.setChecked(false);
                 RadioFourth.setChecked(false);
+                RadioNone.setChecked(false);
                 break;
             case R.id.thurd_team:
                 checkedRadio = R.id.thurd_team;
@@ -148,6 +156,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
                 RadioSecond.setChecked(false);
                 RadioThird.setChecked(true);
                 RadioFourth.setChecked(false);
+                RadioNone.setChecked(false);
                 break;
             case R.id.fouth_team:
                 checkedRadio = R.id.fouth_team;
@@ -155,6 +164,15 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
                 RadioSecond.setChecked(false);
                 RadioThird.setChecked(false);
                 RadioFourth.setChecked(true);
+                RadioNone.setChecked(false);
+                break;
+            case R.id.none:
+                checkedRadio = R.id.none;
+                RadioFirst.setChecked(false);
+                RadioSecond.setChecked(false);
+                RadioThird.setChecked(false);
+                RadioFourth.setChecked(false);
+                RadioNone.setChecked(true);
                 break;
         }
     }

@@ -45,5 +45,6 @@
     <string name="who_guessed">Кто угадал слово %s ?</string>
     <string name="who">Кто?</string>
     <string name="choose_complexity">Пожалуйста,выберите сложность</string>
+    <string name="none">Никто</string>
 
 </resources>

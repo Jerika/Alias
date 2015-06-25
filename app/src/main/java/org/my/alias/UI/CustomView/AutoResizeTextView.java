@@ -1,4 +1,4 @@
-package org.my.alias;
+package org.my.alias.UI.CustomView;
 
 /**
  *               DO WHAT YOU WANT TO PUBLIC LICENSE

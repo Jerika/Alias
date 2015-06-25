@@ -81,8 +81,7 @@
             android:id="@+id/score"
             android:layout_weight="1"
             android:onClick="onShowScoreClick"
-            android:nestedScrollingEnabled="false"
-            android:textAppearance="@android:style/TextAppearance.Large" />
+            android:nestedScrollingEnabled="false" />
 
         <Button
             android:layout_width="match_parent"
@@ -90,7 +89,6 @@
             android:text="@string/start"
             android:id="@+id/button"
             android:onClick="onStartClick"
-            android:textAppearance="@android:style/TextAppearance.Large"
             android:singleLine="true"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1" />

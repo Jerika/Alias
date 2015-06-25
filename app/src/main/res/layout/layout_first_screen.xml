@@ -8,8 +8,15 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:background="@drawable/enimals14"></LinearLayout>
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:background="@drawable/stamp"
+            android:layout_gravity="center" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"

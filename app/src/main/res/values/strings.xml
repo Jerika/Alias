@@ -60,4 +60,6 @@
     <string name="who_guessed">Who guess word %s ?</string>
     <string name="who">Who?</string>
     <string name="choose_complexity">Please, choose comlexity</string>
+    <string name="none">None</string>
+
 </resources>
