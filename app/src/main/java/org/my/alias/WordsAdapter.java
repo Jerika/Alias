@@ -27,13 +27,8 @@ public class WordsAdapter extends ArrayAdapter<Pair> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // ViewHolder
-        //
-        // буферизирует оценку различных полей шаблона элемента
         final Pair word = words.get(position);
         final ViewHolder holder;
-        // Очищает сущетсвующий шаблон, если параметр задан
-        // Работает только если базовый шаблон для всех классов один и тот же
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = context.getLayoutInflater();

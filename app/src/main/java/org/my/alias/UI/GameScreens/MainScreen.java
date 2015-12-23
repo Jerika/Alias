@@ -155,7 +155,7 @@ public class MainScreen extends AppCompatActivity implements View.OnClickListene
             }
             public void onFinish() {
                 if (!finish){
-                    MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.stop); // создаём новый объект mediaPlayer
+                    MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.stop);
                     mediaPlayer.start();
                 }
                 finish = true;

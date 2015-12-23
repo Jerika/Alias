@@ -159,7 +159,7 @@ public class StartScreen extends AppCompatActivity {
 
     public void onStartClick(View view) {
         sharedPreferences.edit().putInt(Preferences.KEY_ACTIVE_TEAM, getCheckedRadioButton()).apply();
-        startActivity(new Intent(this, MainScreen.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     public void onShowScoreClick(View view) {
