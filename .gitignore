@@ -6,3 +6,9 @@
 /captures
 gradle*
 *.iml
+/app/*.iml
+/.idea
+/*.iml
+/complexPreferences/build
+build
+*.properties
