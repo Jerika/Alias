@@ -10,7 +10,8 @@ import android.preference.PreferenceManager;
 
 import org.my.alias.R;
 
-public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
+public class SettingsFragment extends PreferenceFragment
+        implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
     SharedPreferences pref;
     CheckBoxPreference light;

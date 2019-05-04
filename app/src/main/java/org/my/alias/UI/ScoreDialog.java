@@ -1,13 +1,14 @@
 package org.my.alias.UI;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -20,22 +21,23 @@ import org.my.alias.UI.GameScreens.StartScreen;
 import java.util.ArrayList;
 
 import br.com.kots.mob.complex.preferences.ComplexPreferences;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class ScoreDialog extends DialogFragment {
     String SAVE_DATA_KEY = "score";
     ArrayList<Team> allTeams;
-    @InjectView(R.id.first_team)TextView textFirst;
-    @InjectView(R.id.second_team)TextView textSecond;
-    @InjectView(R.id.thurd_team)TextView textThird;
-    @InjectView(R.id.fourth_team)TextView textFourth;
+    @BindView (R.id.first_team)TextView textFirst;
+    @BindView (R.id.second_team)TextView textSecond;
+    @BindView (R.id.thurd_team)TextView textThird;
+    @BindView (R.id.fourth_team)TextView textFourth;
 
 
     public ScoreDialog(){
         super();
     }
 
+    @SuppressLint("ValidFragment")
     public ScoreDialog(ArrayList<Team> allTeams){
         super();
         this.allTeams = allTeams;
@@ -53,7 +55,7 @@ public class ScoreDialog extends DialogFragment {
         ComplexPreferences complexPreferences = ComplexPreferences.getComplexPreferences(getActivity(), "all_teams", getActivity().MODE_PRIVATE);
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View v = inflater.inflate(R.layout.dialog_layout, null);
-        ButterKnife.inject(this, v);
+        ButterKnife.bind(this, v);
         Team firstTeam;
         Team secondTeam;
         Team thirdTeam;
@@ -62,30 +64,39 @@ public class ScoreDialog extends DialogFragment {
         switch (teamsNumber) {
             case 2:
                 firstTeam = complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);
-                textFirst.setText(getString(R.string.perform_score, getString(R.string.team1), firstTeam.getScore(), firstTeam.getSteps()));
+                textFirst.setText(getString(R.string.perform_score, getString(R.string.team1),
+                        String.valueOf(firstTeam.getScore()), String.valueOf(firstTeam.getSteps())));
                 secondTeam = complexPreferences.getObject(Preferences.KEY_SECOND, Team.class);
-                textSecond.setText(getString(R.string.perform_score, getString(R.string.team2), secondTeam.getScore(), secondTeam.getSteps()));
+                textSecond.setText(getString(R.string.perform_score, getString(R.string.team2),
+                        String.valueOf(secondTeam.getScore()), String.valueOf(secondTeam.getSteps())));
                 textThird.setVisibility(View.GONE);
                 textFourth.setVisibility(View.GONE);
                 break;
             case 3:
                 firstTeam = complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);
-                textFirst.setText(getString(R.string.perform_score, getString(R.string.team1), firstTeam.getScore(), firstTeam.getSteps()));
+                textFirst.setText(getString(R.string.perform_score, getString(R.string.team1),
+                        String.valueOf(firstTeam.getScore()), String.valueOf(firstTeam.getSteps())));
                 secondTeam = complexPreferences.getObject(Preferences.KEY_SECOND, Team.class);
-                textSecond.setText(getString(R.string.perform_score, getString(R.string.team2), secondTeam.getScore(), secondTeam.getSteps()));
+                textSecond.setText(getString(R.string.perform_score, getString(R.string.team2),
+                        String.valueOf(secondTeam.getScore()), String.valueOf(secondTeam.getSteps())));
                 thirdTeam = complexPreferences.getObject(Preferences.KEY_THIRD, Team.class);
-                textThird.setText(getString(R.string.perform_score, getString(R.string.team3),thirdTeam.getScore(),thirdTeam.getSteps()));
+                textThird.setText(getString(R.string.perform_score, getString(R.string.team3),
+                        String.valueOf(thirdTeam.getScore()), String.valueOf(thirdTeam.getSteps())));
                 textFourth.setVisibility(View.GONE);
                 break;
             case 4:
                 firstTeam = complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);
-                textFirst.setText(getString(R.string.perform_score, getString(R.string.team1), firstTeam.getScore(), firstTeam.getSteps()));
+                textFirst.setText(getString(R.string.perform_score, getString(R.string.team1),
+                        String.valueOf(firstTeam.getScore()), String.valueOf(firstTeam.getSteps())));
                 secondTeam = complexPreferences.getObject(Preferences.KEY_SECOND, Team.class);
-                textSecond.setText(getString(R.string.perform_score, getString(R.string.team2), secondTeam.getScore(), secondTeam.getSteps()));
+                textSecond.setText(getString(R.string.perform_score, getString(R.string.team2),
+                        String.valueOf(secondTeam.getScore()), String.valueOf(secondTeam.getSteps())));
                 thirdTeam = complexPreferences.getObject(Preferences.KEY_THIRD, Team.class);
-                textThird.setText(getString(R.string.perform_score, getString(R.string.team3),thirdTeam.getScore(),thirdTeam.getSteps()));
+                textThird.setText(getString(R.string.perform_score, getString(R.string.team3),
+                        String.valueOf(thirdTeam.getScore()), String.valueOf(thirdTeam.getSteps())));
                 fourthTeam = complexPreferences.getObject(Preferences.KEY_FOURTH, Team.class);
-                textFourth.setText(getString(R.string.perform_score, getString(R.string.team4), fourthTeam.getScore(), fourthTeam.getSteps()));
+                textFourth.setText(getString(R.string.perform_score, getString(R.string.team4),
+                        String.valueOf(fourthTeam.getScore()), String.valueOf(fourthTeam.getSteps())));
                 break;
         }
 

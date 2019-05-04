@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,18 +13,18 @@ import android.widget.ListView;
 import org.my.alias.Pair;
 import org.my.alias.Preferences;
 import org.my.alias.R;
-import org.my.alias.UI.ScoreDialog;
 import org.my.alias.Team;
+import org.my.alias.UI.ScoreDialog;
 import org.my.alias.WordsAdapter;
 
 import java.util.ArrayList;
 
 import br.com.kots.mob.complex.preferences.ComplexPreferences;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class FinishScreen extends AppCompatActivity {
-    @InjectView (R.id.listView) ListView list;
+    @BindView(R.id.listView) ListView list;
     WordsAdapter adapter;
     int score;
     SharedPreferences preferences;
@@ -41,7 +41,7 @@ public class FinishScreen extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_finish_screen);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         Intent intent = getIntent();
         wordsArrayList = (ArrayList<Pair>) intent.getSerializableExtra(Preferences.KEY_PAIR);
 
@@ -90,7 +90,7 @@ public void onNextRoundClick(View view) {
         teamSaved = true;
         previousScore = checkedScore;
         ScoreDialog scoreDialog = new ScoreDialog();
-        scoreDialog.show(getFragmentManager(), "score");
+        scoreDialog.show(getSupportFragmentManager(), "score");
     }
 
 

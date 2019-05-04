@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     //The Android's default system path of your application database.
@@ -123,6 +124,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         return word;
+    }
+
+    public ArrayList<String> get10Words(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(myContext);
+        String compl = prefs.getString("compl", "2");
+        ArrayList<String> words = new ArrayList<>();
+        Cursor cursor = myDataBase.rawQuery("SELECT word FROM words WHERE complexity IN (" + compl + ") ORDER BY RANDOM() LIMIT 10", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            words.add(cursor.getString(cursor.getColumnIndex("word")));
+            cursor.moveToNext();
+        }
+        return words;
     }
 }
 

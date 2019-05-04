@@ -17,6 +17,7 @@ package org.my.alias.UI.CustomView;
  */
 
 import android.content.Context;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.text.Layout.Alignment;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -32,7 +33,7 @@ import android.widget.TextView;
  * @author Chase Colburn
  * @since Apr 4, 2011
  */
-public class AutoResizeTextView extends TextView {
+public class AutoResizeTextView extends AppCompatTextView {
 
     // Minimum text size for this text view
     public static final float MIN_TEXT_SIZE = 20;

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,25 +18,25 @@ import org.my.alias.Team;
 import org.my.alias.UI.ScoreDialog;
 
 import br.com.kots.mob.complex.preferences.ComplexPreferences;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class StartScreen extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     ComplexPreferences complexPreferences;
-    @InjectView (R.id.radio_group_team) RadioGroup radioGroup;
-    @InjectView (R.id.first_team) RadioButton radioFirst;
-    @InjectView (R.id.second_team)RadioButton radioSecond;
-    @InjectView (R.id.thurd_team)RadioButton radioThird;
-    @InjectView (R.id.fouth_team)RadioButton radioFourth;
-    @InjectView (R.id.info)TextView info;
+    @BindView (R.id.radio_group_team) RadioGroup radioGroup;
+    @BindView (R.id.first_team) RadioButton radioFirst;
+    @BindView (R.id.second_team)RadioButton radioSecond;
+    @BindView (R.id.thurd_team)RadioButton radioThird;
+    @BindView (R.id.fouth_team)RadioButton radioFourth;
+    @BindView (R.id.info)TextView info;
     boolean continueGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_start_screen);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         complexPreferences = ComplexPreferences.getComplexPreferences(this, "all_teams", MODE_PRIVATE);
         continueGame = sharedPreferences.getBoolean("continue", false);
@@ -98,9 +98,11 @@ public class StartScreen extends AppCompatActivity {
                     complexPreferences.putObject(Preferences.KEY_SECOND, new Team(2));
                 }else {
                     firstTeam = complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);
-                    radioFirst.setText(getString(R.string.perform_score, getString(R.string.team1), firstTeam.getScore(), firstTeam.getSteps()));
+                    radioFirst.setText(getString(R.string.perform_score, getString(R.string.team1),
+                            String.valueOf(firstTeam.getScore()), String.valueOf(firstTeam.getSteps())));
                     secondTeam = complexPreferences.getObject(Preferences.KEY_SECOND, Team.class);
-                    radioSecond.setText(getString(R.string.perform_score, getString(R.string.team2),  secondTeam.getScore(), secondTeam.getSteps()));
+                    radioSecond.setText(getString(R.string.perform_score, getString(R.string.team2),
+                            String.valueOf(secondTeam.getScore()), String.valueOf(secondTeam.getSteps())));
                 }
                 radioThird.setVisibility(View.INVISIBLE);
                 radioFourth.setVisibility(View.INVISIBLE);
@@ -112,11 +114,14 @@ public class StartScreen extends AppCompatActivity {
                     complexPreferences.putObject(Preferences.KEY_THIRD, new Team(3));
                 }else {
                     firstTeam = complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);
-                    radioFirst.setText(getString(R.string.perform_score, getString(R.string.team1), firstTeam.getScore(), firstTeam.getSteps()));
+                    radioFirst.setText(getString(R.string.perform_score, getString(R.string.team1),
+                            String.valueOf(firstTeam.getScore()), String.valueOf(firstTeam.getSteps())));
                     secondTeam = complexPreferences.getObject(Preferences.KEY_SECOND, Team.class);
-                    radioSecond.setText(getString(R.string.perform_score, getString(R.string.team2),  secondTeam.getScore(), secondTeam.getSteps()));
+                    radioSecond.setText(getString(R.string.perform_score, getString(R.string.team2),
+                            String.valueOf(secondTeam.getScore()), String.valueOf(secondTeam.getSteps())));
                     thirdTeam = complexPreferences.getObject(Preferences.KEY_THIRD, Team.class);
-                    radioThird.setText(getString(R.string.perform_score, getString(R.string.team3),thirdTeam.getScore(),thirdTeam.getSteps()));
+                    radioThird.setText(getString(R.string.perform_score, getString(R.string.team3),
+                            String.valueOf(thirdTeam.getScore()), String.valueOf(thirdTeam.getSteps())));
                 }
                 radioFourth.setVisibility(View.INVISIBLE);
                 break;
@@ -128,13 +133,17 @@ public class StartScreen extends AppCompatActivity {
                     complexPreferences.putObject(Preferences.KEY_FOURTH, new Team(4));
                 }else{
                     firstTeam = complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);
-                    radioFirst.setText(getString(R.string.perform_score, getString(R.string.team1), firstTeam.getScore(), firstTeam.getSteps()));
+                    radioFirst.setText(getString(R.string.perform_score, getString(R.string.team1),
+                            String.valueOf(firstTeam.getScore()), String.valueOf(firstTeam.getSteps())));
                     secondTeam = complexPreferences.getObject(Preferences.KEY_SECOND, Team.class);
-                    radioSecond.setText(getString(R.string.perform_score, getString(R.string.team2),  secondTeam.getScore(), secondTeam.getSteps()));
+                    radioSecond.setText(getString(R.string.perform_score, getString(R.string.team2),
+                            String.valueOf(secondTeam.getScore()), String.valueOf(secondTeam.getSteps())));
                     thirdTeam = complexPreferences.getObject(Preferences.KEY_THIRD, Team.class);
-                    radioThird.setText(getString(R.string.perform_score, getString(R.string.team3),thirdTeam.getScore(),thirdTeam.getSteps()));
+                    radioThird.setText(getString(R.string.perform_score, getString(R.string.team3),
+                            String.valueOf(thirdTeam.getScore()), String.valueOf(thirdTeam.getSteps())));
                     fourthTeam = complexPreferences.getObject(Preferences.KEY_FOURTH, Team.class);
-                    radioFourth.setText(getString(R.string.perform_score, getString(R.string.team4), fourthTeam.getScore(), fourthTeam.getSteps()));
+                    radioFourth.setText(getString(R.string.perform_score, getString(R.string.team4),
+                            String.valueOf(fourthTeam.getScore()), String.valueOf(fourthTeam.getSteps())));
                 }
 
                 break;
@@ -164,7 +173,7 @@ public class StartScreen extends AppCompatActivity {
 
     public void onShowScoreClick(View view) {
         ScoreDialog scoreDialog = new ScoreDialog();
-        scoreDialog.show(getFragmentManager(), "score");
+        scoreDialog.show(getSupportFragmentManager(), "score");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

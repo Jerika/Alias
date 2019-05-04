@@ -13,8 +13,8 @@
     <string name="complexity">Complexity</string>
     <string name="light">Light</string>
     <string name="key_light">light</string>
-    <string name= "middle">Middle</string>
-    <string name="key_middle">middle</string>
+    <string name= "middle">Medium</string>
+    <string name="key_middle">medium</string>
     <string name="key_hard">hard</string>
     <string name="hard">Hard</string>
     <string name="super_hard">Super Hard</string>
@@ -59,8 +59,15 @@
     <string name="perform_score">%1$s, score: %2$s, steps: %3$s</string>
     <string name="who_guessed">Who guess word %s ?</string>
     <string name="who">Who?</string>
-    <string name="choose_complexity">Please, choose comlexity</string>
+    <string name="choose_complexity">Complexity</string>
     <string name="none">None</string>
+
+    <string name="rules">В игру Alias играют командами из двух или более человек.
+        Главная идея игры заключается в том, чтобы объяснить слова своим товарищам по команде
+        другими словами, используя, например, синонимы, антонимы и подсказки так, чтобы члены вашей
+        команды смогли отгадать как можно больше слов прежде чем истечет время.
+        Чем больше слов отгадала команда, тем больше очков она сможет заработать. За каждое угаданное
+        слово добавляется 1 очко, за неотгаданное 1 очко отнимается</string>
 
 
 </resources>

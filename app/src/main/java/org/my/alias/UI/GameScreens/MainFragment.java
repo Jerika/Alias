@@ -1,17 +1,18 @@
 package org.my.alias.UI.GameScreens;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import org.my.alias.DatabaseHelper;
@@ -20,36 +21,42 @@ import org.my.alias.R;
 import org.my.alias.UI.CustomView.AutoResizeTextView;
 import org.my.alias.UI.CustomView.CircleProgressBar;
 import org.my.alias.UI.LastWordDialog;
+import org.my.alias.UI.card.ListAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import swipeable.com.layoutmanager.OnItemSwiped;
+import swipeable.com.layoutmanager.SwipeableLayoutManager;
+import swipeable.com.layoutmanager.SwipeableTouchHelperCallback;
+import swipeable.com.layoutmanager.touchelper.ItemTouchHelper;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
-    @InjectView(R.id.ok)
-    Button ok;
-    @InjectView (R.id.skip)
-    Button skip;
-    @InjectView (R.id.word)
-    AutoResizeTextView word;
-    @InjectView(R.id.custom_progressBar)
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+    @BindView(R.id.custom_progressBar)
     CircleProgressBar CircleBar;
-    @InjectView (R.id.timer)
+    @BindView(R.id.timer)
     TextView timer;
-    int score;
-    DatabaseHelper helper;
-    CountDownTimer countDownTimer;
-    int duration;
-    boolean finish = false;
-    double full;
-    ArrayList<Pair> playWords = new ArrayList<>();
-
-    public MainFragment() {
-        super();
-        setRetainInstance(true);
-    }
+    @BindView(R.id.ok)
+    Button ok;
+    @BindView(R.id.skip)
+    Button skip;
+    private int score;
+    private CountDownTimer countDownTimer;
+    private int duration;
+    private boolean finish = false;
+    private double full;
+    private ArrayList<Pair> playWords = new ArrayList<>();
+    private ItemTouchHelper itemTouchHelper;
+    private ListAdapter adapter;
+    private DatabaseHelper helper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,22 +72,64 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_main, null);
-        ButterKnife.inject(this, view);
-        ok.setOnClickListener(this);
-        skip.setOnClickListener(this);
+        View view = inflater.inflate(R.layout.main_layout, null);
+        ButterKnife.bind(this, view);
+        ArrayList<String> words = helper.get10Words();
+        adapter = new ListAdapter(words, getContext());
+
+        itemTouchHelper = new ItemTouchHelper(swipeableTouchHelperCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+        recyclerView.setLayoutManager(new SwipeableLayoutManager().setAngle(10)
+                .setAnimationDuratuion(450)
+                .setMaxShowCount(3)
+                .setScaleGap(0.1f)
+                .setTransYGap(0));
+        recyclerView.setAdapter(adapter);
         setTypeface();
         score = 0;
-        word.setText(helper.getWords());
         CircleBar.setProgress(100);
+        ok.setOnClickListener(this);
+        skip.setOnClickListener(this);
         return view;
     }
 
-    private void setTypeface() {
-        Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "a_stamper.ttf");
-        word.setTypeface(type);
-        timer.setTypeface(type);
-    }
+    private SwipeableTouchHelperCallback swipeableTouchHelperCallback =
+            new SwipeableTouchHelperCallback(new OnItemSwiped() {
+                @Override
+                public void onItemSwiped() {
+                    adapter.removeTopItem();
+                    adapter.addItem(helper.getWords());
+                }
+
+                @Override
+                public void onItemSwipedLeft() {
+                    Pair notGuessed = new Pair(adapter.getCurrent(), false);
+                    playWords.add(notGuessed);
+                    score--;
+                }
+
+                @Override
+                public void onItemSwipedRight() {
+                    Pair guessed = new Pair(adapter.getCurrent(), true);
+                    playWords.add(guessed);
+                    score++;
+                }
+
+                @Override
+                public void onItemSwipedUp() {
+
+                }
+
+                @Override
+                public void onItemSwipedDown() {
+
+                }
+            }) {
+                @Override
+                public int getAllowedSwipeDirectionsMovementFlags(RecyclerView.ViewHolder viewHolder) {
+                    return ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT;
+                }
+            };
 
     private void openDatabase() {
         helper = new DatabaseHelper(getActivity());
@@ -93,73 +142,53 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    public void createTimer(){
-        countDownTimer = new CountDownTimer(duration* 1000, 1000) {
+    private void setTypeface() {
+        Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "a_stamper.ttf");
+        timer.setTypeface(type);
+    }
+
+    private void createTimer() {
+        countDownTimer = new CountDownTimer(duration * 1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 long sec = millisUntilFinished / 1000;
                 timer.setText(String.valueOf(sec));
-                float progressBar = (float) (full*sec);
+                float progressBar = (float) (full * sec);
                 CircleBar.setProgressWithAnimation(progressBar);
             }
+
             public void onFinish() {
-                if (!finish){
+                if (!finish) {
                     MediaPlayer mediaPlayer = MediaPlayer.create(getActivity(), R.raw.stop);
                     mediaPlayer.start();
                 }
                 finish = true;
-                LastWordDialog lastWordDialog = new LastWordDialog(word.getText(), playWords, score);
+                LastWordDialog lastWordDialog = new LastWordDialog(adapter.getCurrent(), playWords, score);
                 lastWordDialog.setCancelable(false);
                 lastWordDialog.show(getFragmentManager(), "lastWord");
             }
         };
     }
-
-    @Override
-    public void onDestroy() {
-        countDownTimer.cancel();
-        super.onDestroy();
-    }
-
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.ok:
-                Pair guessed = new Pair(word.getText().toString(), true);
-                playWords.add(guessed);
-                score++;
-                word.setTextSize(50);
-                word.setText(helper.getWords());
+                itemTouchHelper.swipe(recyclerView.findViewHolderForAdapterPosition(0),
+                        ItemTouchHelper.RIGHT);
+                disableButton(ok);
+                disableButton(skip);
                 break;
             case R.id.skip:
-                Pair notGuessed = new Pair(word.getText().toString(), false);
-                playWords.add(notGuessed);
-                score--;
-                word.setText(helper.getWords());
+                itemTouchHelper.swipe(recyclerView.findViewHolderForAdapterPosition(0),
+                        ItemTouchHelper.LEFT);
+                disableButton(ok);
+                disableButton(skip);
                 break;
         }
     }
 
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+    private void disableButton(Button button) {
+        button.setClickable(false);
+        button.postDelayed(() -> button.setClickable(true),300);
+    }
 
 }
