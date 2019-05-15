@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/wooden114"
@@ -13,7 +12,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -53,12 +52,14 @@
             android:orientation="horizontal">
 
             <RadioGroup
+                android:id="@+id/compexity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="30dp"
-                android:paddingRight="30dp"
-                android:id="@+id/compexity">
+                android:paddingRight="30dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -68,7 +69,7 @@
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/light" />
@@ -123,5 +124,45 @@
         </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:orientation="horizontal"
+            android:paddingBottom="30dp">
+
+            <RadioGroup
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp"
+                    android:text="@string/time"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30 секунд" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45 секунд" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="60 секунд" />
+            </RadioGroup>
+        </LinearLayout>
     </LinearLayout>
+
 </ScrollView>

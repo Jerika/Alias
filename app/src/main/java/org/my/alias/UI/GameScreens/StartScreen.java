@@ -21,6 +21,8 @@ import br.com.kots.mob.complex.preferences.ComplexPreferences;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static org.my.alias.Preferences.KEY_CONTINUE;
+
 public class StartScreen extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     ComplexPreferences complexPreferences;
@@ -39,50 +41,45 @@ public class StartScreen extends AppCompatActivity {
         ButterKnife.bind(this);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         complexPreferences = ComplexPreferences.getComplexPreferences(this, "all_teams", MODE_PRIVATE);
-        continueGame = sharedPreferences.getBoolean("continue", false);
-        sharedPreferences.edit().putBoolean("continue", true).apply();
+        continueGame = sharedPreferences.getBoolean(KEY_CONTINUE, false);
+        sharedPreferences.edit().putBoolean(KEY_CONTINUE, true).apply();
         setRadioGroupText();
 
         int active = sharedPreferences.getInt(Preferences.KEY_ACTIVE_TEAM, 1);
         switch (active) {
             case 1:
                 radioFirst.setChecked(true);
-                info.setText(getString(R.string.info) + " " + getString(R.string.for_team1));
+                info.setText(String.format("%s %s", getString(R.string.info), getString(R.string.for_team1)));
                 break;
             case 2:
                 radioSecond.setChecked(true);
-                info.setText(getString(R.string.info) + " " + getString(R.string.for_team2));
+                info.setText(String.format("%s %s", getString(R.string.info), getString(R.string.for_team2)));
                 break;
             case 3:
                 radioThird.setChecked(true);
-                info.setText(getString(R.string.info) + " " + getString(R.string.for_team3));
+                info.setText(String.format("%s %s", getString(R.string.info), getString(R.string.for_team3)));
                 break;
             case 4:
                 radioFourth.setChecked(true);
-                info.setText(getString(R.string.info) + " " + getString(R.string.for_team4));
+                info.setText(String.format("%s %s", getString(R.string.info), getString(R.string.for_team4)));
                 break;
         }
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.first_team:
-                        info.setText(getString(R.string.info) + " " + getString(R.string.for_team1));
-                        break;
-                    case R.id.second_team:
-                        info.setText(getString(R.string.info) + " " + getString(R.string.for_team2));
-                        break;
-                    case R.id.thurd_team:
-                        info.setText(getString(R.string.info) + " " + getString(R.string.for_team3));
-                        break;
-                    case R.id.fouth_team:
-                        info.setText(getString(R.string.info) + " " + getString(R.string.for_team4));
-                        break;
-                }
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.first_team:
+                    info.setText(String.format("%s %s", getString(R.string.info), getString(R.string.for_team1)));
+                    break;
+                case R.id.second_team:
+                    info.setText(String.format("%s %s", getString(R.string.info), getString(R.string.for_team2)));
+                    break;
+                case R.id.thurd_team:
+                    info.setText(String.format("%s %s", getString(R.string.info), getString(R.string.for_team3)));
+                    break;
+                case R.id.fouth_team:
+                    info.setText(String.format("%s %s", getString(R.string.info), getString(R.string.for_team4)));
+                    break;
             }
         });
-
-
     }
 
     public void setRadioGroupText() {

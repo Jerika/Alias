@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ListAdapter extends RecyclerView.Adapter<ListItem> {
-    private ArrayList<String> words = new ArrayList<>();
+    private ArrayList<String> words;
     private Context context;
 
     public ListAdapter(ArrayList<String> playWords, Context context) {

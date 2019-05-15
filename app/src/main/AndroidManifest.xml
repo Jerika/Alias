@@ -22,8 +22,6 @@
         <activity android:name=".UI.GameScreens.FinishScreen"/>
         <activity android:name=".UI.GameScreens.StartScreen"/>
 
-        <activity android:name=".UI.SettingsActivity"/>
-
     </application>
 
 </manifest>

@@ -38,11 +38,7 @@
     <string name="next_round">Next round</string>
     <string name="show_score">Show score</string>
     <string name="teams_numbers">Teams numbers</string>
-    <string-array name="teams">
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </string-array>
+    <string name="time">Продолжительность раунда</string>
 
     <string name="team1">First team</string>
     <string name="team2">Second team</string>

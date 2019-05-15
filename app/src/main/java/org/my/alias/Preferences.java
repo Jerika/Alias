@@ -24,6 +24,8 @@ public class Preferences {
     public static final String KEY_WORD = "word";
     public static final String KEY_TIMER = "timer";
     public static final String KEY_FINISH = "finish";
+    public static final String KEY_COMPLEXITY = "compl";
+    public static final String KEY_CONTINUE = "continue";
 
 
     private Preferences(Context context) {
@@ -100,34 +102,34 @@ public class Preferences {
         return team;
     }
 
-    public String getComplexity(){
-        ArrayList<Integer> complexity = new ArrayList<>();
-        boolean light = sharedPreferences.getBoolean("light", false);
-        if (light){
-            complexity.add(1);
-        }
-        boolean middle = sharedPreferences.getBoolean("middle", false);
-        if (middle){
-            complexity.add(2);
-        }
-        boolean hard = sharedPreferences.getBoolean("hard", false);
-        if (hard){
-            complexity.add(3);
-        }
-        boolean superHard = sharedPreferences.getBoolean("superHard", false);
-        if (superHard){
-            complexity.add(4);
-        }
-        String compl = null;
-        for (int i = 0; i < complexity.size(); i++){
-            if (i == 0){
-                compl = String.valueOf(complexity.get(0));
-            }else{
-                compl = compl + ", " +  complexity.get(i);
-            }
-
-        }
-        return compl;
-    }
+//    public String getComplexity(){
+//        ArrayList<Integer> complexity = new ArrayList<>();
+//        boolean light = sharedPreferences.getBoolean("light", false);
+//        if (light){
+//            complexity.add(1);
+//        }
+//        boolean middle = sharedPreferences.getBoolean("middle", false);
+//        if (middle){
+//            complexity.add(2);
+//        }
+//        boolean hard = sharedPreferences.getBoolean("hard", false);
+//        if (hard){
+//            complexity.add(3);
+//        }
+//        boolean superHard = sharedPreferences.getBoolean("superHard", false);
+//        if (superHard){
+//            complexity.add(4);
+//        }
+//        String compl = null;
+//        for (int i = 0; i < complexity.size(); i++){
+//            if (i == 0){
+//                compl = String.valueOf(complexity.get(0));
+//            }else{
+//                compl = compl + ", " +  complexity.get(i);
+//            }
+//
+//        }
+//        return compl;
+//    }
 
 }

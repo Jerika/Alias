@@ -24,6 +24,8 @@ import br.com.kots.mob.complex.preferences.ComplexPreferences;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static org.my.alias.Preferences.KEY_CONTINUE;
+
 public class ScoreDialog extends DialogFragment {
     String SAVE_DATA_KEY = "score";
     ArrayList<Team> allTeams;
@@ -102,18 +104,10 @@ public class ScoreDialog extends DialogFragment {
 
         AlertDialog score = new AlertDialog.Builder(getActivity()).setView(v).setTitle(getString(R.string.score))
                 .setInverseBackgroundForced(true)
-                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dismiss();
-                    }
-                }).setNegativeButton(getString(R.string.next_round), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getActivity(), StartScreen.class);
-                        intent.getBooleanExtra("continue", true);
-                        startActivity(intent);
-                    }
+                .setPositiveButton(getString(R.string.ok), (dialog, which) -> dismiss()).setNegativeButton(getString(R.string.next_round), (dialog, which) -> {
+                    Intent intent = new Intent(getActivity(), StartScreen.class);
+                    intent.getBooleanExtra(KEY_CONTINUE, true);
+                    startActivity(intent);
                 }).create();
         return score;
     }

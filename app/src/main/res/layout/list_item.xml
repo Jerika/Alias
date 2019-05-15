@@ -10,14 +10,16 @@
         android:layout_height="match_parent"
         android:background="@drawable/wooden1141"/>
 
-    <org.my.alias.UI.CustomView.AutoResizeTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:text="@string/hello_world"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="50sp"
         android:id="@+id/word"
         android:textStyle="normal|bold"
         android:maxLines="1"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:autoSizeTextType="uniform"/>
 
 </androidx.cardview.widget.CardView>

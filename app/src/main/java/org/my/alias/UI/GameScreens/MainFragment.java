@@ -1,24 +1,20 @@
 package org.my.alias.UI.GameScreens;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import org.my.alias.DatabaseHelper;
 import org.my.alias.Pair;
 import org.my.alias.R;
-import org.my.alias.UI.CustomView.AutoResizeTextView;
 import org.my.alias.UI.CustomView.CircleProgressBar;
 import org.my.alias.UI.LastWordDialog;
 import org.my.alias.UI.card.ListAdapter;
@@ -26,16 +22,17 @@ import org.my.alias.UI.card.ListAdapter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import swipeable.com.layoutmanager.OnItemSwiped;
 import swipeable.com.layoutmanager.SwipeableLayoutManager;
 import swipeable.com.layoutmanager.SwipeableTouchHelperCallback;
 import swipeable.com.layoutmanager.touchelper.ItemTouchHelper;
+
+import static org.my.alias.Preferences.KEY_TIMER;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.recycler_view)
@@ -63,7 +60,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         openDatabase();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        duration = Integer.parseInt(sharedPreferences.getString("duration", "60"));
+        duration = sharedPreferences.getInt(KEY_TIMER, 60);
         full = 100 / (double) duration;
         createTimer();
         countDownTimer.start();
@@ -168,6 +165,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             }
         };
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -188,7 +186,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     private void disableButton(Button button) {
         button.setClickable(false);
-        button.postDelayed(() -> button.setClickable(true),300);
+        button.postDelayed(() -> button.setClickable(true), 500);
     }
-
 }

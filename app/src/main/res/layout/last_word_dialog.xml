@@ -1,74 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    android:orientation="vertical"
+    android:padding="30dp">
 
-    <TextView
+    <RadioButton
+        android:id="@+id/first_team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Какая команда угадала слово %s "
-        android:id="@+id/lastWord"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp" />
+        android:text="@string/team1" />
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:background="@drawable/wooden114">
+    <RadioButton
+        android:id="@+id/second_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/team2" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/team1"
-            android:id="@+id/first_team"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/team3"
-            android:id="@+id/thurd_team"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/second_team"
-            android:layout_toEndOf="@+id/second_team" />
+    <RadioButton
+        android:id="@+id/thurd_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/team3" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/team2"
-            android:id="@+id/second_team"
-            android:layout_row="1"
-            android:layout_column="0"
-            android:layout_below="@+id/first_team"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+    <RadioButton
+        android:id="@+id/fouth_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/team4" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/team4"
-            android:id="@+id/fouth_team"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:layout_below="@+id/first_team"
-            android:layout_toRightOf="@+id/second_team"
-            android:layout_toEndOf="@+id/second_team" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/none"
-            android:id="@+id/none"
-            android:layout_row="2"
-            android:layout_column="0" />
-
-    </GridLayout>
+    <RadioButton
+        android:id="@+id/none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/none" />
 
 </LinearLayout>

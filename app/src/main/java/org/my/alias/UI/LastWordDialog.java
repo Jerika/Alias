@@ -8,11 +8,15 @@ import androidx.fragment.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -35,11 +39,10 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
     @BindView (R.id.thurd_team)RadioButton RadioThird;
     @BindView (R.id.fouth_team)RadioButton RadioFourth;
     @BindView (R.id.none) RadioButton RadioNone;
-    @BindView (R.id.lastWord) TextView text;
 
     private ArrayList<Pair> playWords;
     private int score;
-    private CharSequence word;
+    private String word;
     private int checkedRadio;
     private ComplexPreferences complexPreferences;
     private SharedPreferences sharedPreferences;
@@ -53,7 +56,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
     }
 
     @SuppressLint("ValidFragment")
-    public LastWordDialog(CharSequence word, ArrayList<Pair> pair, int score){
+    public LastWordDialog(String word, ArrayList<Pair> pair, int score){
         super();
         this.word = word;
         this.playWords = pair;
@@ -76,7 +79,6 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View v = inflater.inflate(R.layout.last_word_dialog, null);
         ButterKnife.bind(this, v);
-        text.setText(getString(R.string.who_guessed, word));
         RadioFirst.setOnClickListener(this);
         RadioSecond.setOnClickListener(this);
         RadioThird.setOnClickListener(this);
@@ -92,7 +94,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
                 break;
         }
 
-        AlertDialog lastWord = new AlertDialog.Builder(getContext()).setView(v).setTitle(R.string.who)
+        AlertDialog lastWord = new AlertDialog.Builder(getContext(), R.style.AlertDialogStyle).setView(v).setTitle(getString(R.string.who_guessed, word.toUpperCase()))
                 .setPositiveButton(getString(R.string.ok), (dialog, which) -> {
                     Team team = getCheckedTeam();
                     if (team != null){
@@ -113,7 +115,7 @@ public class LastWordDialog extends DialogFragment implements View.OnClickListen
         return lastWord ;
     }
 
-    public Team getCheckedTeam(){
+    private Team getCheckedTeam(){
         switch (checkedRadio){
             case R.id.first_team:
                 return complexPreferences.getObject(Preferences.KEY_FIRST, Team.class);
