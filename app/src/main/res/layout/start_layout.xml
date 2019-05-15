@@ -8,11 +8,11 @@
         android:layout_height="match_parent"
         android:background="@drawable/wooden114"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/padding_medium">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_height="@dimen/logo_height"
             android:orientation="horizontal">
 
             <ImageView
@@ -28,22 +28,22 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/margin_large"
                 android:layout_weight="1"
                 android:onClick="onStartClick"
                 android:singleLine="true"
                 android:text="@string/start"
-                android:textSize="25sp" />
+                android:textSize="@dimen/start_button_text_size" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/screen_background_light_transparent"
-            android:padding="10dp"
+            android:padding="@dimen/padding_small"
             android:text="@string/rules"
             android:textColor="@android:color/black"
-            android:textSize="15sp" />
+            android:textSize="@dimen/instruction_text_size" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,16 +55,16 @@
                 android:id="@+id/compexity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="30dp"
-                android:paddingRight="30dp">
+                android:paddingStart="@dimen/padding_medium"
+                android:paddingLeft="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_large"
+                android:paddingRight="@dimen/padding_large">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="20dp"
+                    android:paddingBottom="@dimen/padding_medium"
                     android:text="@string/choose_complexity"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
@@ -94,14 +94,14 @@
                 android:id="@+id/team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp">
+                android:paddingStart="@dimen/padding_small"
+                android:paddingLeft="@dimen/padding_small"
+                android:paddingTop="@dimen/padding_small">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="20dp"
+                    android:paddingBottom="@dimen/padding_medium"
                     android:text="@string/teams_numbers"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
@@ -109,17 +109,17 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2" />
+                    android:text="@string/second" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3" />
+                    android:text="@string/thurd" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4" />
+                    android:text="@string/fouth" />
             </RadioGroup>
         </LinearLayout>
 
@@ -129,20 +129,20 @@
             android:layout_height="wrap_content"
             android:background="@android:drawable/screen_background_light_transparent"
             android:orientation="horizontal"
-            android:paddingBottom="30dp">
+            android:paddingBottom="@dimen/padding_large">
 
             <RadioGroup
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp">
+                android:paddingStart="@dimen/padding_small"
+                android:paddingLeft="@dimen/padding_small"
+                android:paddingTop="@dimen/padding_small">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="20dp"
+                    android:paddingBottom="@dimen/padding_medium"
                     android:text="@string/time"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />

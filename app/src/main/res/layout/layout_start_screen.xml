@@ -1,105 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wooden114"
-    android:weightSum="1"
-    android:gravity="bottom">
-
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <RelativeLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_gravity="center"
-        >
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/info"
-            android:layout_gravity="center_horizontal"
-            android:textAppearance="@android:style/TextAppearance.Large"
-            android:layout_marginVertical="120dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="43dp"
             android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="@dimen/margin_xxxl"
+            android:layout_marginTop="@dimen/margin_xl"
             android:gravity="center"
-            android:textStyle="bold"/>
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textStyle="bold"
+            tools:text="New Text" />
 
         <RadioGroup
+            android:id="@+id/radio_group_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radio_group_team"
-            android:gravity="left"
             android:layout_below="@+id/info"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true">
+            android:gravity="left">
 
             <RadioButton
+                android:id="@+id/first_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/team1"
-                android:id="@+id/first_team"
                 android:textAppearance="@android:style/TextAppearance.Medium"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RadioButton
+                android:id="@+id/second_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/team2"
-                android:id="@+id/second_team"
                 android:textAppearance="@android:style/TextAppearance.Medium"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RadioButton
+                android:id="@+id/thurd_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/team3"
-                android:id="@+id/thurd_team"
                 android:textAppearance="@android:style/TextAppearance.Medium"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RadioButton
+                android:id="@+id/fouth_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/team4"
-                android:id="@+id/fouth_team"
                 android:textAppearance="@android:style/TextAppearance.Medium"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
         </RadioGroup>
-
-
-
     </RelativeLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/linearLayout">
+        android:layout_height="@dimen/button_layout"
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/score"
+            style="@style/AppTheme.Button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/show_score"
-            android:id="@+id/score"
             android:layout_weight="1"
             android:onClick="onShowScoreClick"
-            style="@style/AppTheme.Button" />
+            android:text="@string/show_score" />
 
         <Button
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/start"
-            android:id="@+id/button"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
             android:onClick="onStartClick"
             android:singleLine="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1" />
+            android:text="@string/start" />
 
     </LinearLayout>
 

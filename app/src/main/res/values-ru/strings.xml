@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Alias</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Настройки</string>
     <string name="restart">Перезапустить</string>
     <string name="skip">Пропустить</string>
@@ -16,19 +15,10 @@
     <string name="hard">Сложно</string>
     <string name="super_hard">Очень сложно</string>
 
-    <string name="duration">Продолжительность</string>
-    <string name="duration_title">Задать продолжительность</string>
-
-    <string-array name="duration_text">
-        <item>30 секунд</item>
-        <item>45 секунд</item>
-        <item>60 секунд</item>
-    </string-array>
-
-    <string name="global_setting">Глобальные настройки</string>
     <string name="next_round">Следующий раунд</string>
     <string name="show_score">Показать счет</string>
     <string name="teams_numbers">Число команд</string>
+    <string name="time">Продолжительность раунда</string>
 
     <string name="team1">Первая команда</string>
     <string name="team2">Вторая команда</string>
@@ -46,6 +36,10 @@
     <string name="who">Кто?</string>
     <string name="choose_complexity">Сложность</string>
     <string name="none">Никто</string>
+
+    <string name="duration_30">30 секунд</string>
+    <string name="duration_45">45 секунд</string>
+    <string name="duration_60">60 секунд</string>
     
     <string name="rules">В игру Alias играют командами из двух или более человек.
         Главная идея игры заключается в том, чтобы объяснить слова своим товарищам по команде

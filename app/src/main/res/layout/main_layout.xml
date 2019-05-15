@@ -14,14 +14,14 @@
 
         <org.my.alias.UI.CustomView.CircleProgressBar
             android:id="@+id/custom_progressBar"
-            android:layout_width="@dimen/progressBar_dimen"
-            android:layout_height="@dimen/progressBar_dimen"
+            android:layout_width="@dimen/progress_bar_dimen"
+            android:layout_height="@dimen/progress_bar_dimen"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
 
             android:layout_gravity="center"
             app:progress="35"
-            app:progressBarThickness="10dp" />
+            app:progressBarThickness="@dimen/progress_bar_thickness" />
 
         <TextView
             android:id="@+id/timer"
@@ -30,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="right"
-            android:textSize="60sp" />
+            android:textSize="@dimen/progress_text_size" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -45,7 +45,7 @@
     <LinearLayout
         android:id="@+id/buttons"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/button_layout"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
