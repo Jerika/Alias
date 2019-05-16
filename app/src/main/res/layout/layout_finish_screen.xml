@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
     android:id="@+id/finish_layout"
-    android:background="@drawable/wooden114">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wooden114"
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listView"
         android:layout_weight="1" />
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_layout"
-        android:id="@+id/linearLayout2" >
+        android:orientation="horizontal">
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/next_round"
-            android:id="@+id/next_round"
-            android:layout_weight="1"
-            android:onClick="onNextRoundClick" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/show_score"
             android:id="@+id/show_score"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="onShowScoreClick" />
+            android:onClick="onShowScoreClick"
+            android:text="@string/show_score" />
+
+        <Button
+            android:id="@+id/next_round"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onNextRoundClick"
+            android:text="@string/next_round" />
 
     </LinearLayout>
 </LinearLayout>
