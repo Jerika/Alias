@@ -97,7 +97,7 @@ class MainFragment : Fragment(), View.OnClickListener {
         recycler_view.adapter = adapter
         setTypeface()
         score = 0
-        custom_progressBar.setProgressWithInvalidate(100f)
+        custom_progressBar.setProgress(100f)
         ok.setOnClickListener(this)
         skip.setOnClickListener(this)
     }

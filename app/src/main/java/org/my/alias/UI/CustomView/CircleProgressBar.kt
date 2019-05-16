@@ -1,24 +1,7 @@
-/*
- * Copyright (C) 2015 Pedramrn@gmail.com
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
- */
-
 package org.my.alias.UI.CustomView
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -26,22 +9,11 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
-
 import org.my.alias.R
 
-/**
- * A subclass of [android.view.View] class for creating a custom circular progressBar
- *
- * Created by Pedram on 2015-01-06.
- */
 class CircleProgressBar(context: Context, attrs: AttributeSet) : View(context, attrs) {
-
-
-    /**
-     * ProgressBar's line thickness
-     */
     private var strokeWidth = 4f
-    var progress = 0f
+    private var progress = 0f
     private var min = 0
     private var max = 100
     /**
@@ -49,9 +21,9 @@ class CircleProgressBar(context: Context, attrs: AttributeSet) : View(context, a
      */
     private val startAngle = -90
     private var color = Color.DKGRAY
-    private var rectF: RectF? = null
-    private var backgroundPaint: Paint? = null
-    private var foregroundPaint: Paint? = null
+    private lateinit var rectF: RectF
+    private lateinit var backgroundPaint: Paint
+    private lateinit var foregroundPaint: Paint
 
     fun getStrokeWidth(): Float {
         return strokeWidth
@@ -59,13 +31,17 @@ class CircleProgressBar(context: Context, attrs: AttributeSet) : View(context, a
 
     fun setStrokeWidth(strokeWidth: Float) {
         this.strokeWidth = strokeWidth
-        backgroundPaint!!.strokeWidth = strokeWidth
-        foregroundPaint!!.strokeWidth = strokeWidth
+        backgroundPaint.strokeWidth = strokeWidth
+        foregroundPaint.strokeWidth = strokeWidth
         invalidate()
         requestLayout()//Because it should recalculate its bounds
     }
 
-    fun setProgressWithInvalidate(progress: Float) {
+    fun getProgress(): Float {
+        return progress
+    }
+
+    fun setProgress(progress: Float) {
         this.progress = progress
         invalidate()
     }
@@ -94,8 +70,8 @@ class CircleProgressBar(context: Context, attrs: AttributeSet) : View(context, a
 
     fun setColor(color: Int) {
         this.color = color
-        backgroundPaint!!.color = adjustAlpha(color, 0.3f)
-        foregroundPaint!!.color = color
+        backgroundPaint.color = adjustAlpha(color, 0.3f)
+        foregroundPaint.color = color
         invalidate()
         requestLayout()
     }
@@ -122,32 +98,32 @@ class CircleProgressBar(context: Context, attrs: AttributeSet) : View(context, a
         }
 
         backgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        backgroundPaint!!.color = adjustAlpha(color, 0.3f)
-        backgroundPaint!!.style = Paint.Style.STROKE
-        backgroundPaint!!.strokeWidth = strokeWidth
+        backgroundPaint.color = adjustAlpha(color, 0.3f)
+        backgroundPaint.style = Paint.Style.STROKE
+        backgroundPaint.strokeWidth = strokeWidth
 
         foregroundPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        foregroundPaint!!.color = color
-        foregroundPaint!!.style = Paint.Style.STROKE
-        foregroundPaint!!.strokeWidth = strokeWidth
+        foregroundPaint.color = color
+        foregroundPaint.style = Paint.Style.STROKE
+        foregroundPaint.strokeWidth = strokeWidth
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        canvas.drawOval(rectF!!, backgroundPaint!!)
+        canvas.drawOval(rectF, backgroundPaint)
         val angle = 360 * progress / max
-        canvas.drawArc(rectF!!, startAngle.toFloat(), angle, false, foregroundPaint!!)
+        canvas.drawArc(rectF, startAngle.toFloat(), angle, false, foregroundPaint)
 
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
 
-        val height = View.getDefaultSize(suggestedMinimumHeight, heightMeasureSpec)
-        val width = View.getDefaultSize(suggestedMinimumWidth, widthMeasureSpec)
+        val height = getDefaultSize(suggestedMinimumHeight, heightMeasureSpec)
+        val width = getDefaultSize(suggestedMinimumWidth, widthMeasureSpec)
         val min = Math.min(width, height)
         setMeasuredDimension(min, min)
-        rectF!!.set(0 + strokeWidth / 2, 0 + strokeWidth / 2, min - strokeWidth / 2, min - strokeWidth / 2)
+        rectF.set(0 + strokeWidth / 2, 0 + strokeWidth / 2, min - strokeWidth / 2, min - strokeWidth / 2)
     }
 
     /**
